@@ -23,7 +23,8 @@
         <form action="index.php" class="task-form" method="POST" onsubmit="return subTask()">
             <div class="form-group">
                 <label for="task-title">Task Title:</label>
-                <input type="text" id="task-title" name="task-title" placeholder="Enter task title">
+                <input type="text" id="task-title" name="task-title" onkeyup="charOnly(this);"
+                    placeholder="Enter task title">
                 <span id="title_success" class="success"></span>
                 <span id="title_error" class="error"></span>
             </div>
@@ -45,8 +46,9 @@
             </div>
             <div class="form-group">
                 <label for="task-message">Task Message:</label>
-                <textarea id="task-message" name="task-message" rows="5" maxlength="1000"
-                    placeholder="Write your task message (maximum 1000 characters)"></textarea>
+                <textarea id="task-message" name="task-message" rows="5" maxlength="10004"
+                    placeholder="Write your task message (maximum 1000 characters)"
+                    onkeyup="charOnly(this);"></textarea>
                 <span id="message_success" class="success"></span>
                 <span id="message_error" class="error"></span>
             </div>
@@ -60,14 +62,21 @@
 
     <script type="text/javascript">
         viewtask();
+        function charOnly(input) {
+            var regex = /[^ a-z 1234567890:/.]/gi;
+            input.value = input.value.replace(regex, "");
+        }
         function subTask() {
             var title = document.getElementById("task-title").value;
             var priority = document.getElementById("task-priority").value;
             var date = document.getElementById("due-date").value;
             var message = document.getElementById("task-message").value;
-            if (title == '' || priority == '' || date == '' || message == '') {
+            if (title == '' || priority == '' || date == '' || message == '' || title.length > 1000) {
                 if (title == '') {
                     document.getElementById("title_error").innerHTML = "Task Title can't be blank ❌";
+                }
+                else if (title.length > 1000) {
+                    document.getElementById("title_error").innerHTML = "Title should have less than 1000 characetrs ❌";
                 }
                 else {
                     document.getElementById("title_error").innerHTML = "";
@@ -86,6 +95,9 @@
                 }
                 if (message == '') {
                     document.getElementById("message_error").innerHTML = "Task Message can't be blank ❌";
+                }
+                else if (message.length > 1000) {
+                    document.getElementById("message_error").innerHTML = "Message should have less than 1000 characters ❌";
                 }
                 else {
                     document.getElementById("message_error").innerHTML = "";
