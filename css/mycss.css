@@ -133,3 +133,10 @@ float: right;
 .options_active{
     background-color: #2fb344; 
 }
+.error{
+    color: #972205;  
+    font-size: 14px;
+}
+.success{
+    color: #006c12;  
+}
