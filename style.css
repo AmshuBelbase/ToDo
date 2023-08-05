@@ -1,0 +1,78 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 20px solid #977fa1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+th.Task message {
+    min-width: 00px;
+}
+
+td:button {
+    margin-right: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.button {
+    border: #dddddd;
+    color: white;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    text-decoration: solid;
+    display: block;
+    font-size: 15px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    width: 82px;
+    box-shadow: 0 8px 16px 0 rgba(15, 11, 223, 0.2), 0 6px 20px 0 rgba(164, 84, 84, 0.19);
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    /* border: 1px solid #1b8f2e; */
+    border: 1px solid #714d69;
+}
+
+.button1:hover {
+    box-shadow: 0 12px 16px 0 rgba(5, 126, 225, 0.24), 0 17px 50px 0 rgba(195, 17, 215, 0.19);
+    background-color: #714d69;
+    color: white;
+}
+
+#Tasks th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+}
+
+#Tasks tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#Tasks tr:hover {
+    background-color: #ddd;
+}
+
+#Tasks td,
+#Tasks th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
