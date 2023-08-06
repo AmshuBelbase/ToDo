@@ -23,12 +23,22 @@ if (isset($_POST['submit'])) {
     $priority = $_POST["task-priority"];
     $due = $_POST["due-date"];
     $message = $_POST["task-message"];
-    $query = mysqli_query($con, "INSERT INTO todo(name, email, title, priority, due, message) VALUES ('$idname','$idemail','$title', '$priority', '$due', '$message')");
-    if ($query) {
-        echo "<script>alert('Task Added Successfully');</script>";
-    } else {
-        echo "<script>alert('Error 2');</script>";
+    if ($title == '' || $priority == '' || $due == '' || $message == '') {
+        $query = mysqli_query($con, "INSERT INTO todo(name, email, title, priority, due, message) VALUES ('$idname','$idemail','$title', '$priority', '$due', '$message')");
+        if ($query) {
+            $title = '';
+            $priority = '';
+            $due = '';
+            $message = '';
+            echo "<script>alert('Task Added Successfully');</script>";
+        } else {
+            echo "<script>alert('Error 2');</script>";
+        }
     }
+    $title = '';
+    $priority = '';
+    $due = '';
+    $message = '';
 }
 
 ?>
