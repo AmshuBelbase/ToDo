@@ -109,7 +109,7 @@ textarea {
     resize: vertical;
 }
 
-button {
+.submit, button{
     background-color: #4CAF50;
     color: #fff;
     padding: 10px 20px;

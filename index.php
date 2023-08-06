@@ -1,3 +1,37 @@
+<?php
+$idname = 0;
+$id = 0;
+if (isset($_COOKIE["idname"]) && isset($_COOKIE["id"])) {
+    include "php/connect.php";
+    $idname = $_COOKIE["idname"];
+    $id = $_COOKIE["id"];
+    $sql = mysqli_query($con, "SELECT * from userdata WHERE ID = '$id' AND UserName = '$idname'");
+    if (mysqli_num_rows($sql) > 0) {
+        $data = mysqli_fetch_assoc($sql);
+        $idemail = $data["Email"];
+    } else {
+        echo "<script>alert('Error');</script>";
+    }
+    $date = date("Y-m-d H:i:s");
+    $update_stat = mysqli_query($con, "UPDATE `userdata` SET `timestamp`= '$date' WHERE ID = '$id' AND UserName = '$idname'");
+} else {
+    echo "<script>window.location.href ='login_page.php';</script>";
+}
+
+if (isset($_POST['submit'])) {
+    $title = $_POST["task-title"];
+    $priority = $_POST["task-priority"];
+    $due = $_POST["due-date"];
+    $message = $_POST["task-message"];
+    $query = mysqli_query($con, "INSERT INTO todo(name, email, title, priority, due, message) VALUES ('$idname','$idemail','$title', '$priority', '$due', '$message')");
+    if ($query) {
+        echo "<script>alert('Task Added Successfully');</script>";
+    } else {
+        echo "<script>alert('Error 2');</script>";
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,9 +70,9 @@
             <div class="form-group">
                 <label for="task-priority">Task Priority:</label>
                 <select id="task-priority" name="task-priority">
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
                 </select>
                 <span id="priority_success" class="success"></span>
                 <span id="priority_error" class="error"></span>
@@ -57,7 +91,7 @@
                 <span id="message_success" class="success"></span>
                 <span id="message_error" class="error"></span>
             </div>
-            <button type="submit">Submit</button>
+            <input type="submit" class="submit" name="submit" value="Submit">
         </form>
     </div>
 
@@ -66,203 +100,90 @@
             <table id="Tasks">
                 <tr>
                     <th>S.N</th>
-                    <th>TItle</th>
-                    <th>Priority</th>
+                    <th>Title</th>
                     <th>Due Date</th>
                     <th>Remaining Days</th>
+                    <th>Priority</th>
                     <th>Task Message</th>
                     <th>❌</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>APP</td>
-                    <td>Low</td>
-                    <td>******</td>
-                    <td>******</td>
 
-                    <td>Submit within Sunday</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>DSA</td>
-                    <td>Medium</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>Submit Today</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Maths</td>
-                    <td>High</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>Surprise Test</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Operating System</td>
-                    <td>Low</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>Up to Next Lab</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Professional Ethics</td>
-                    <td>High</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>Create Team and Topics to Discuss</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Design THinking</td>
-                    <td>Low</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>-----</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Computer Architecture</td>
-                    <td>Low</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>------</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>APP</td>
-                    <td>Low</td>
-                    <td>******</td>
-                    <td>******</td>
+                <?php
+                $fetch = mysqli_query($con, "SELECT * FROM todo WHERE name ='$idname' and email='$idemail'");
+                if (mysqli_num_rows($fetch) > 0) {
+                    $count = 0;
+                    while ($row = mysqli_fetch_assoc($fetch)) {
+                        $count++;
+                        ?>
 
-                    <td>Submit within Sunday</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>DSA</td>
-                    <td>Medium</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>Submit Today</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Maths</td>
-                    <td>High</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>Surprise Test</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Operating System</td>
-                    <td>Low</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>Up to Next Lab</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Professional Ethics</td>
-                    <td>High</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>Create Team and Topics to Discuss</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Design THinking</td>
-                    <td>Low</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>-----</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Computer Architecture</td>
-                    <td>Low</td>
-                    <td>******</td>
-                    <td>******</td>
-                    <td>------</td>
-                    <td>
-                        <button class="button button1" onclick="alert('Task Removed')">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
+                        <tr>
+                            <td>
+                                <?php echo $count; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['title']; ?>
+                            </td>
+
+                            <td>
+                                <?php echo $row['due']; ?>
+                            </td>
+                            <td>
+                                <?php
+                                $today = time();
+                                $due_date = $row['due'];
+                                $due_date_stamp = strtotime($due_date);
+                                $date_diff = $due_date_stamp - $today;
+                                $int_day = intval($date_diff / 86400);
+                                if ($int_day > ($date_diff / 86400)) {
+                                    echo ($int_day);
+                                } else {
+                                    echo ($int_day + 1);
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php echo $row['priority']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['message']; ?>
+                            </td>
+                            <td>
+                                <button class="button button1" onclick="ajaxCall(<?php echo $row['id']; ?>)">
+                                    Remove
+                                </button>
+                            </td>
+                        </tr>
+
+                        <?php
+                    }
+                }
+                ?>
+
+
+
             </table>
         </div>
     </div>
 
     <script type="text/javascript">
         viewtask();
+
+        function ajaxCall(input) {
+            alert("About To Delete " + input);
+            let xhr1 = new XMLHttpRequest();
+            xhr1.open("POST", "php/remove_task.php", true);
+            xhr1.onload = () => {
+                if (xhr1.readyState === XMLHttpRequest.DONE) {
+                    if (xhr1.status === 200) {
+                        let data = xhr1.response;
+                        document.getElementById("Tasks").innerHTML = data;
+                    }
+                }
+            }
+            xhr1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr1.send("incoming_id=" + input);
+        }
+
         function charOnly(input) {
             var regex = /[^ a-z 1234567890:/.]/gi;
             input.value = input.value.replace(regex, "");
@@ -324,9 +245,10 @@
             myElement2.classList.remove('view');
             const myElement5 = document.getElementById('addbtn');
             myElement5.style.backgroundColor = '#f76707';
+            myElement5.innerHTML = 'Add Task ➡️';
             const myElement6 = document.getElementById('viewbtn');
             myElement6.style.backgroundColor = 'green';
-
+            myElement6.innerHTML = 'View Task';
             mytoggle();
         }
         function viewtask() {
@@ -336,8 +258,10 @@
             myElement4.classList.remove('view');
             const myElement7 = document.getElementById('addbtn');
             myElement7.style.backgroundColor = 'green';
+            myElement7.innerHTML = 'Add Task';
             const myElement8 = document.getElementById('viewbtn');
             myElement8.style.backgroundColor = '#f76707';
+            myElement8.innerHTML = 'View Task ➡️';
             mytoggle();
         }
     </script>
