@@ -20,6 +20,14 @@ body {
 .navbar_phone {
     display: none;
 }
+.container {
+    max-width: 810px; 
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
 @media (max-width: 1000px) {
   .navbar_phone {
     display: block;
@@ -27,6 +35,9 @@ body {
   .toggle{
     display: none;
   } 
+  .container{
+    padding: 10px;
+  }
 } 
 .navbar-header {
     margin-top: 20px;
@@ -65,14 +76,7 @@ h1 {
 /* Rest of the styles remain the same */
 
 
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: none;
-}
+
 .view{
     display: block; 
 }
@@ -118,7 +122,7 @@ button:hover {
     background-color: #45a049;
 }
 .option{
-float: right;
+    float: right;
 }
 .options {  
     background-color: #45a049;
