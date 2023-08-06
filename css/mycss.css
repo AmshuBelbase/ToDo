@@ -28,7 +28,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: none;
 }
-@media (max-width: 1000px) {
+@media (max-width: 1120px) {
   .navbar_phone {
     display: block;
   }

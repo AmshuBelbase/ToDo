@@ -24,21 +24,19 @@ if (isset($_POST['submit'])) {
     $due = $_POST["due-date"];
     $message = $_POST["task-message"];
     if ($title == '' || $priority == '' || $due == '' || $message == '') {
+
+    } else {
         $query = mysqli_query($con, "INSERT INTO todo(name, email, title, priority, due, message) VALUES ('$idname','$idemail','$title', '$priority', '$due', '$message')");
         if ($query) {
             $title = '';
             $priority = '';
             $due = '';
             $message = '';
-            echo "<script>alert('Task Added Successfully');</script>";
+            echo "<script>window.location.href ='index.php';</script>";
         } else {
             echo "<script>alert('Error 2');</script>";
         }
     }
-    $title = '';
-    $priority = '';
-    $due = '';
-    $message = '';
 }
 
 ?>
@@ -112,7 +110,7 @@ if (isset($_POST['submit'])) {
                     <th>S.N</th>
                     <th>Title</th>
                     <th>Due Date</th>
-                    <th>Remaining Days</th>
+                    <th>Days Left</th>
                     <th>Priority</th>
                     <th>Task Message</th>
                     <th>❌</th>
@@ -173,20 +171,20 @@ if (isset($_POST['submit'])) {
 
             </table>
         </div>
+
     </div>
 
     <script type="text/javascript">
         viewtask();
 
         function ajaxCall(input) {
-            alert("About To Delete " + input);
+            //alert("About To Delete " + input);
             let xhr1 = new XMLHttpRequest();
             xhr1.open("POST", "php/remove_task.php", true);
             xhr1.onload = () => {
                 if (xhr1.readyState === XMLHttpRequest.DONE) {
                     if (xhr1.status === 200) {
-                        let data = xhr1.response;
-                        document.getElementById("Tasks").innerHTML = data;
+                        window.location.href = 'index.php';
                     }
                 }
             }
@@ -255,7 +253,7 @@ if (isset($_POST['submit'])) {
             myElement2.classList.remove('view');
             const myElement5 = document.getElementById('addbtn');
             myElement5.style.backgroundColor = '#f76707';
-            myElement5.innerHTML = 'Add Task ➡️';
+            myElement5.innerHTML = 'Add Task ↘️';
             const myElement6 = document.getElementById('viewbtn');
             myElement6.style.backgroundColor = 'green';
             myElement6.innerHTML = 'View Task';
@@ -271,7 +269,7 @@ if (isset($_POST['submit'])) {
             myElement7.innerHTML = 'Add Task';
             const myElement8 = document.getElementById('viewbtn');
             myElement8.style.backgroundColor = '#f76707';
-            myElement8.innerHTML = 'View Task ➡️';
+            myElement8.innerHTML = 'View Task ↗️';
             mytoggle();
         }
     </script>
