@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Management</title>
+    <title>To Do</title>
+    <link href="R.png?v=<?php echo rand(); ?>" rel="icon">
     <link rel="stylesheet" href="css/mycss.css">
+    <link rel="stylesheet" href="css/style.css" />
+
 </head>
 
 <body>
@@ -17,6 +20,8 @@
         <button class="options" onclick="viewtask()" id="viewbtn" style="border-bottom-right-radius: 20px;">View
             Tasks</button>
     </div>
+    <br>
+    <br>
 
     <div class="container" id="addtask">
         <h1>Add Task</h1>
@@ -57,7 +62,203 @@
     </div>
 
     <div class="container view" id="viewtask">
+        <div class="table_container">
+            <table id="Tasks">
+                <tr>
+                    <th>S.N</th>
+                    <th>TItle</th>
+                    <th>Priority</th>
+                    <th>Due Date</th>
+                    <th>Remaining Days</th>
+                    <th>Task Message</th>
+                    <th>❌</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>APP</td>
+                    <td>Low</td>
+                    <td>******</td>
+                    <td>******</td>
 
+                    <td>Submit within Sunday</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>DSA</td>
+                    <td>Medium</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>Submit Today</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Maths</td>
+                    <td>High</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>Surprise Test</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Operating System</td>
+                    <td>Low</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>Up to Next Lab</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Professional Ethics</td>
+                    <td>High</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>Create Team and Topics to Discuss</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Design THinking</td>
+                    <td>Low</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>-----</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Computer Architecture</td>
+                    <td>Low</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>------</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>APP</td>
+                    <td>Low</td>
+                    <td>******</td>
+                    <td>******</td>
+
+                    <td>Submit within Sunday</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>DSA</td>
+                    <td>Medium</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>Submit Today</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Maths</td>
+                    <td>High</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>Surprise Test</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Operating System</td>
+                    <td>Low</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>Up to Next Lab</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Professional Ethics</td>
+                    <td>High</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>Create Team and Topics to Discuss</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Design THinking</td>
+                    <td>Low</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>-----</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Computer Architecture</td>
+                    <td>Low</td>
+                    <td>******</td>
+                    <td>******</td>
+                    <td>------</td>
+                    <td>
+                        <button class="button button1" onclick="alert('Task Removed')">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <script type="text/javascript">

@@ -1,7 +1,12 @@
+.table_container{  
+    max-width: 810px;
+    
+    overflow: auto;
+}
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 100%; 
 }
 
 td,
@@ -11,9 +16,7 @@ th {
     font-size: 16px;
 }
 
-th.Task message {
-    min-width: 00px;
-}
+
 
 td:button {
     margin-right: 10px;
@@ -59,12 +62,18 @@ tr:nth-child(even) {
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
-    background-color: #04AA6D;
+    background-color: #45a049;
     color: white;
 }
 
 #Tasks tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+#Tasks th:nth-child(6) {
+    min-width: 250px;
+}
+#Tasks th:nth-child(2) {
+    min-width: 150px;
 }
 
 #Tasks tr:hover {
