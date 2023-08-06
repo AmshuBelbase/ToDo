@@ -117,7 +117,7 @@ if (isset($_POST['submit'])) {
                 </tr>
 
                 <?php
-                $fetch = mysqli_query($con, "SELECT * FROM todo WHERE name ='$idname' and email='$idemail'");
+                $fetch = mysqli_query($con, "SELECT * FROM todo WHERE name ='$idname' and email='$idemail' ORDER BY due ASC, priority ASC");
                 if (mysqli_num_rows($fetch) > 0) {
                     $count = 0;
                     while ($row = mysqli_fetch_assoc($fetch)) {
