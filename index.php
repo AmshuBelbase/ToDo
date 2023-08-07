@@ -48,10 +48,13 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do</title>
     <link href="R.png?v=<?php echo rand(); ?>" rel="icon">
-    <link rel="stylesheet" href="css/mycss.css">
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mycss.css?v=<?php echo rand(); ?>">
+    <link rel="stylesheet" href="css/style.css?v=<?php echo rand(); ?>" />
 
 </head>
+<style>
+
+</style>
 
 <body>
     <div class="navbar_phone">

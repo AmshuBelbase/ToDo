@@ -79,6 +79,7 @@ if (isset($_POST['submit'])) {
         margin: 0;
         background: url(images.jpg);
         background-attachment: fixed;
+        background-size: cover;
         background-position: center;
     }
 
