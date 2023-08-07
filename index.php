@@ -157,7 +157,7 @@ if (isset($_POST['submit'])) {
                             </td>
                             <td>
                                 <button class="button button1" onclick="ajaxCall(<?php echo $row['id']; ?>)">
-                                    Remove
+                                    Finish
                                 </button>
                             </td>
                         </tr>
