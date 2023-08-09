@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Kathmandu');
 $idname = 0;
 $id = 0;
 if (isset($_COOKIE["idname"]) && isset($_COOKIE["id"])) {
